@@ -76,8 +76,12 @@ function renderIcons(filter = "") {
 =================================*/
 function copyUrl(id, type) {
     const urlDiv = document.getElementById(id);
-    const url = urlDiv.getAttribute("data-url").trim();
-    const fullUrl = window.location.origin + url;
+    const relativeUrl = urlDiv.getAttribute("data-url").trim();
+
+    // Always build absolute URL safely
+    const fullUrl = new URL(relativeUrl, window.location.origin).href;
+
+    // Get clean icon name only
     const alt = urlDiv.textContent.trim();
 
     let text = "";
@@ -96,6 +100,7 @@ function copyUrl(id, type) {
         .then(() => showToast("Copied!"))
         .catch(() => showToast("Copy failed!", true));
 }
+
 
 /* ===============================
    BADGE MODAL
