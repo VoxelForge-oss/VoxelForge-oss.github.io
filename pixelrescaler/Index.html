@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pixel Art Resizer – Pixel Rescaler</title>
+<meta name="description" content="Free online pixel art resizer. Scale pixel art with crisp nearest-neighbour interpolation.">
+  <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<main>
+  <header>
+    <h1>Pixel Rescaler</h1>
+    <p class="subtitle">Resize pixel art with crisp, clean nearest-neighbour scaling.</p>
+  </header>
+
+  <section class="panel" aria-label="Upload image">
+    <div class="drop-zone" id="dropZone">
+      <div class="upload-icon" aria-hidden="true">▧</div>
+      <strong>Drop your pixel art here</strong>
+      <span class="muted">or</span>
+      <label class="file-button" for="fileInput">Choose image</label>
+      <span class="muted">PNG, JPEG, WebP or GIF (first frame)</span>
+    </div>
+    <input id="fileInput" type="file" accept="image/png,image/jpeg,image/webp,image/gif,image/bmp">
+    <div class="file-meta" id="fileMeta">
+      <span class="file-name" id="fileName"></span>
+    </div>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <h2>Scale factor</h2>
+      <strong id="scaleReadout">2×</strong>
+    </div>
+    <div class="scale-mode-row">
+      <span class="scale-mode-label">Choose scaling direction</span>
+      <label class="mode-switch" for="scaleMode">
+        <span>Upscale</span>
+        <input id="scaleMode" type="checkbox" role="switch" aria-label="Switch between upscaling and downscaling" aria-checked="false">
+        <span class="switch-track" aria-hidden="true"></span>
+        <span>Downscale</span>
+      </label>
+    </div>
+    <div class="scale-row">
+      <input id="scaleSlider" type="range" min="1" max="16" step="1" value="2" aria-label="Scale factor">
+      <input id="scaleNumber" type="number" min="1" max="16" step="1" value="2" aria-label="Scale factor number">
+    </div>
+    <div class="range-labels"><span>1×</span><span>16×</span></div>
+    <p class="hint" id="scaleHint">Uses nearest-neighbour interpolation to keep every pixel sharp. Choose a whole-number scale factor.</p>
+  </section>
+
+  <section class="panel">
+    <div class="section-heading">
+      <h2>Preview</h2>
+      <span class="muted" id="dimensions">No image loaded</span>
+    </div>
+    <div class="preview-wrap">
+      <p class="empty-preview" id="emptyPreview">Your resized image will appear here.</p>
+      <canvas id="preview"></canvas>
+    </div>
+    <div class="preview-info">
+      <span id="sourceDimensions">Original: —</span>
+      <span id="outputDimensions">Output: —</span>
+    </div>
+    <div class="download-row">
+      <button id="downloadButton" disabled>Download PNG</button>
+    </div>
+  </section>
+</main>
+
+  <script src="script.js" defer></script>
+
+</body>
+</html>
